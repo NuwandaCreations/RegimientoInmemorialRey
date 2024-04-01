@@ -27,6 +27,8 @@ kotlin {
     }
     
     sourceSets {
+
+        val precompose_version = "1.6.0-rc05"
         
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
@@ -39,6 +41,12 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            //Navigation
+            implementation(compose.animation)
+            implementation("moe.tlaster:precompose:$precompose_version")
+            implementation("moe.tlaster:precompose-viewmodel:$precompose_version")
+            implementation("moe.tlaster:precompose-molecule:$precompose_version")
+            implementation("moe.tlaster:precompose-koin:$precompose_version")
         }
     }
 }
