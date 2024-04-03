@@ -1,5 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
@@ -14,7 +12,7 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -25,11 +23,8 @@ kotlin {
             isStatic = true
         }
     }
-    
-    sourceSets {
 
-        val precompose_version = "1.6.0-rc05"
-        
+    sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
@@ -41,12 +36,6 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            //Navigation
-            implementation(compose.animation)
-            implementation("moe.tlaster:precompose:$precompose_version")
-            implementation("moe.tlaster:precompose-viewmodel:$precompose_version")
-            implementation("moe.tlaster:precompose-molecule:$precompose_version")
-            implementation("moe.tlaster:precompose-koin:$precompose_version")
         }
     }
 }
