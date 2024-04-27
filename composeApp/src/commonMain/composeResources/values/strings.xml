@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">RINF1</string>
+    <string name="appbar_name">RI "INMEMORIAL DEL REY" Nº1</string>
+
+    <string name="anthem_lyrics">Hijos somos del ínclito Marte\ny a la Patria ofrecemos la vida\nnos recuerda la enseña querida\nque juramos su honor defender\nEsa ilustre y gloriosa Bandera\nde la Patria es el símbolo amado\ncon cariño a ese lienzo sagrado\nnuestra sangre debemos verter.
+                        \nNo hay soldado que en ruda campaña\nvacilante se quede detrás\nsiempre digno y en honra de España\nni aún vencido se humilla jamás.\nSi la Patria lo exige, sabemos\nen la lucha alcanzar alta prez\ncuanto más en peligro la vemos\ncrece más nuestra fiera altivez.\n
+                        \nNietos somos de aquellos valientes\nque tan alto renombre alcanzaron\ny animosos con furia lucharon\npor librarnos del fiero invasor.\nDerramando su sangre a torrentes\npor la Patria, esa intrépida raza\ncon su ejemplo, el sendero nos traza\nque debemos seguir en su honor.\n
+                        \nDefender a dos madres queridas\nla misión del soldado ha de ser\nofreciendo por ella cien vidas\nsi cien vidas pudiera tener.\nAl amor de esas madres juremos\nen el alma elevar un altar\ncuanto más a la Patria adoremos\nla otra más orgullosa ha de estar.\n
+                        \nSi hay quien dude Patria amada de tu historia\nsi hay quien sueñe mancillar tu eterna gloria\nromperá el Inmemorial del Rey el fuego\ny el ejército español te salvará.\n
+                        \n¡ Todo por la Patria !\n¡ Todo por la Patria !\n¡ Inmemorial del Rey !</string>
+
+    <string name="dailyOrder">Orden</string>
+    <string name="duties">Servicios</string>
+    <string name="anthem">Himno</string>
+    <string name="organization">Orgánica</string>
+    <string name="home">Inicio</string>
+</resources>

@@ -88,4 +88,7 @@ android {
         implementation(libs.bouquet)
     }
 }
+dependencies {
+    implementation(libs.androidx.material3.android)
+}
 
