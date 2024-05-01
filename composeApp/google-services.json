@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "2956592392",
+    "project_id": "regimientoinmemorialdelrey",
+    "storage_bucket": "regimientoinmemorialdelrey.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2956592392:android:c4cf7c4b06369085ea18bd",
+        "android_client_info": {
+          "package_name": "com.nuwandacreations.regimientoinmemorialreykmp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbNoBc1HNfeq1k_9VJf_jg_LDOAOqov4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
