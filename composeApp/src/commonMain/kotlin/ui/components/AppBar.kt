@@ -2,10 +2,13 @@ package ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.NavigationRail
@@ -117,7 +120,9 @@ fun showNavRail(screenType: ScreenType) {
         painterResource(Res.drawable.ic_anthem),
         painterResource(Res.drawable.ic_organization)
     )
-    NavigationRail(backgroundColor = LightColors.primary) {
+    NavigationRail(backgroundColor = LightColors.primary, modifier = Modifier.fillMaxHeight().verticalScroll(
+        rememberScrollState()
+    )) {
         items.forEachIndexed { index, item ->
             NavigationRailItem(
                 icon = {

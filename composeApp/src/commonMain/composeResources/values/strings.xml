@@ -14,4 +14,7 @@
     <string name="anthem">Himno</string>
     <string name="organization">Orgánica</string>
     <string name="home">Inicio</string>
+
+    <string name="dailyOrderError">No se ha podido cargar la orden del día</string>
+    <string name="dutiesError">No se han podido cargar los servicios</string>
 </resources>

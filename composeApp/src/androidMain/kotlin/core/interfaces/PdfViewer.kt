@@ -6,25 +6,28 @@ import androidx.compose.ui.Modifier
 import com.nuwandacreations.regimientoinmemorialreykmp.R
 import com.rizzi.bouquet.HorizontalPDFReader
 import com.rizzi.bouquet.ResourceType
+import com.rizzi.bouquet.VerticalPDFReader
 import com.rizzi.bouquet.rememberHorizontalPdfReaderState
+import com.rizzi.bouquet.rememberVerticalPdfReaderState
 
 class AndroidPdfViewer : PdfViewer {
     @Composable
-    override fun showPdf(type: PdfType) {
-        val pdf = if (type == PdfType.DUTIES) {
-            rememberHorizontalPdfReaderState(
-//                resource = ResourceType.Remote("https://myreport.altervista.org/Lorem_Ipsum.pdf"),
-                resource = ResourceType.Asset(R.raw.duties2),
-                isZoomEnable = true
-            )
+    override fun showPdf(type: PdfType, url: String?) {
+        if (type == PdfType.FBSTORAGE) {
+            if (!url.isNullOrEmpty()) {
+                val pdf = rememberVerticalPdfReaderState(
+                    resource = ResourceType.Remote(url),
+                    isZoomEnable = true
+                )
+                VerticalPDFReader(state = pdf, modifier = Modifier.fillMaxSize())
+            }
         } else {
-            rememberHorizontalPdfReaderState(
+            val pdf = rememberHorizontalPdfReaderState(
                 resource = ResourceType.Asset(R.raw.organization_charts),
                 isZoomEnable = true
             )
+            HorizontalPDFReader(state = pdf, modifier = Modifier.fillMaxSize())
         }
-
-        HorizontalPDFReader(state = pdf, modifier = Modifier.fillMaxSize())
     }
 }
 

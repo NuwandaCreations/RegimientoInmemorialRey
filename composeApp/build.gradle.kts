@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    id("com.google.gms.google-services") version "4.4.1" apply false
 }
 
 kotlin {
@@ -48,6 +49,9 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kamel.image)
+            implementation(libs.firebase.bom)
+            implementation(libs.firebase.storage)
+            implementation(libs.firebase.auth)
          }
     }
 }
