@@ -52,6 +52,10 @@ kotlin {
             implementation(libs.firebase.bom)
             implementation(libs.firebase.storage)
             implementation(libs.firebase.auth)
+            implementation(libs.ksoup)
+            implementation(libs.ksoup.network)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor)
          }
     }
 }

@@ -11,7 +11,6 @@ import core.interfaces.PdfType.FBSTORAGE
 import core.interfaces.UIInterface
 import core.interfaces.buildPdfViewer
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.InternalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import regimientoinmemorialrey.composeapp.generated.resources.Res
 import regimientoinmemorialrey.composeapp.generated.resources.dutiesError
@@ -22,7 +21,7 @@ class DutiesScreen : Screen, UIInterface {
     @OptIn(ExperimentalResourceApi::class)
     @Composable
     override fun Content() {
-        val screenModel = getScreenModel<DutiesViewModel>()
+        val screenModel = getScreenModel<DutiesScreenModel>()
         screenModel.getDuties()
         val url = screenModel.dutiesUrl.value
         val pdfViewer = remember { buildPdfViewer() }
