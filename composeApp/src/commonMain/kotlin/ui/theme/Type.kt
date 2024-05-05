@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.sp
 
 val TitleParagraphStyle = TextStyle(
     fontWeight = FontWeight.Bold,
-    textDecoration = TextDecoration.Underline,
     color = Color.White,
     fontSize = 20.sp,
     textAlign = TextAlign.Center

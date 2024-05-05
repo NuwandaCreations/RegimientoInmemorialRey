@@ -15,13 +15,14 @@ class AndroidPdfViewer : PdfViewer {
     override fun showPdf(type: PdfType, url: String?) {
         if (type == PdfType.FBSTORAGE) {
             if (!url.isNullOrEmpty()) {
+
                 val pdf = rememberVerticalPdfReaderState(
                     resource = ResourceType.Remote(url),
                     isZoomEnable = true
                 )
                 VerticalPDFReader(state = pdf, modifier = Modifier.fillMaxSize())
             }
-        } else {
+        } else if (type == PdfType.ORGANIZATION) {
             val pdf = rememberHorizontalPdfReaderState(
                 resource = ResourceType.Asset(R.raw.organization_charts),
                 isZoomEnable = true

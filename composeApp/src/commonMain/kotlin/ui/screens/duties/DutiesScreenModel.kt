@@ -7,7 +7,7 @@ import cafe.adriel.voyager.core.model.screenModelScope
 import domain.useCases.GetDutiesUseCase
 import kotlinx.coroutines.launch
 
-class DutiesViewModel(val getDutiesUseCase: GetDutiesUseCase) : ScreenModel {
+class DutiesScreenModel(val getDutiesUseCase: GetDutiesUseCase) : ScreenModel {
     private var _dutiesUrl = mutableStateOf("")
     val dutiesUrl: State<String> = _dutiesUrl
 
