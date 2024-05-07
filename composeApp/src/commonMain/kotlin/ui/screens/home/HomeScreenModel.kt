@@ -13,17 +13,18 @@ class HomeScreenModel(private val getNewsUseCase: GetNewsUseCase, private val st
     private var _newsList = mutableStateOf(emptyList<News>())
     val newsList: State<List<News>> = _newsList
 
-    fun getNews() {
+    fun getNews(uploadNews: Boolean = false) {
         screenModelScope.launch {
             try {
-                val newsList = getNewsUseCase()
+                val newsList = getNewsUseCase(uploadNews)
                 _newsList.value = newsList
-            } catch (e: Exception) {
-            }
+            } catch (_: Exception) {}
         }
     }
 
     fun webIntent(url: String) {
-        startWebIntent(url)
+        try {
+            startWebIntent(url)
+        } catch (_: Exception) {}
     }
 }

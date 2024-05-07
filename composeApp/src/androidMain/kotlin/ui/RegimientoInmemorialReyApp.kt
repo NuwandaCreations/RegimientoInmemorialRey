@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import core.di.appModule
 import core.di.dataModule
+import core.di.databaseModule
 import core.di.screenModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -22,7 +23,8 @@ class RegimientoInmemorialReyApp: Application() {
             modules(
                 appModule,
                 dataModule,
-                screenModelModule
+                screenModelModule,
+                databaseModule
             )
         }
     }

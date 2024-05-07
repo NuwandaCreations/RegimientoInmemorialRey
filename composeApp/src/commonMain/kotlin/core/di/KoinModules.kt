@@ -1,6 +1,7 @@
 package core.di
 
 import data.Repository
+import data.database.NewsDataSource
 import data.network.StorageService
 import data.network.WebService
 import dev.gitlive.firebase.Firebase
@@ -25,7 +26,8 @@ val appModule = module {
 val dataModule = module {
     single { StorageService(provideFirebaseStorage()) }
     single { WebService() }
-    single { Repository(get(), get()) }
+    single { NewsDataSource(get()) }
+    single { Repository(get(), get(), get()) }
 }
 
 val screenModelModule = module {
