@@ -2,10 +2,7 @@ package ui.screens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,13 +12,15 @@ import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
@@ -31,8 +30,11 @@ import core.interfaces.UIInterface
 import domain.model.News
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
-import regimientoinmemorialrey.composeapp.generated.resources.escudo_rinf1
+import org.jetbrains.compose.resources.stringResource
 import regimientoinmemorialrey.composeapp.generated.resources.Res
+import regimientoinmemorialrey.composeapp.generated.resources.motto_head
+import regimientoinmemorialrey.composeapp.generated.resources.motto_response
+import regimientoinmemorialrey.composeapp.generated.resources.news
 import regimientoinmemorialrey.composeapp.generated.resources.palacio_buenavista
 import ui.components.AppBar
 import ui.components.ScreenType
@@ -43,16 +45,19 @@ import ui.theme.TitleParagraphStyle
 class HomeScreen : Screen, UIInterface {
     @Composable
     override fun Content() {
+        var newsList: List<News> by remember { mutableStateOf(emptyList()) }
         val screenModel = getScreenModel<HomeScreenModel>()
-        screenModel.getNews()
-        val news = screenModel.newsList.value
+        if (newsList.isEmpty()) {
+            screenModel.getNews()
+            newsList = screenModel.newsList.value
+        }
 
-        initUI(news, screenModel)
+        initUI(newsList, screenModel)
         AppBar(ScreenType.HOME)
     }
 
     @Composable
-    fun initUI(newsList: List<News>, screenModel: HomeScreenModel) {
+    fun initUI(newsList: List<News>,screenModel: HomeScreenModel) {
         LazyColumn(
             horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.background(
                 LightColors.background
@@ -68,7 +73,7 @@ class HomeScreen : Screen, UIInterface {
     fun showHeader() {
         Spacer(200)
         Text(
-            "POR ESPAÑA Y POR EL REY",
+            text = stringResource(Res.string.motto_head),
             color = Color.White,
             fontSize = 25.sp,
             fontStyle = FontStyle.Italic,
@@ -82,7 +87,7 @@ class HomeScreen : Screen, UIInterface {
         )
         Spacer(20)
         Text(
-            "¡ADELANTE INMEMORIAL!",
+            text = stringResource(Res.string.motto_response),
             color = Color.White,
             fontSize = 25.sp,
             fontStyle = FontStyle.Italic,
@@ -90,7 +95,7 @@ class HomeScreen : Screen, UIInterface {
         )
         Spacer(150)
         Text(
-            "Noticias del Regimiento:",
+            stringResource(Res.string.news),
             color = LightColors.primary,
             fontWeight = FontWeight.Bold,
             fontSize = 22.sp
@@ -99,7 +104,7 @@ class HomeScreen : Screen, UIInterface {
 
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
-    fun showNews(newsList: List<News>, screenModel: HomeScreenModel, index: Int) {
+    fun showNews(newsList: List<News>,screenModel: HomeScreenModel, index: Int) {
         val news = newsList[index]
         Card(
             backgroundColor = LightColors.primaryVariant.copy(alpha = 0.3f),

@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     id("com.google.gms.google-services") version "4.4.1" apply false
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -30,9 +31,11 @@ kotlin {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.android.driver)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.native.driver)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -100,3 +103,10 @@ dependencies {
     implementation(libs.androidx.material3.android)
 }
 
+sqldelight {
+    databases {
+        create("InmemorialDatabase") {
+            packageName.set("inmemorialDatabase")
+        }
+    }
+}
