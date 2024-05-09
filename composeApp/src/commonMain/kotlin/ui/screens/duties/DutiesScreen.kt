@@ -1,5 +1,6 @@
 package ui.screens.duties
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -16,6 +17,7 @@ import regimientoinmemorialrey.composeapp.generated.resources.Res
 import regimientoinmemorialrey.composeapp.generated.resources.dutiesError
 import ui.components.AppBar
 import ui.components.ScreenType
+import ui.theme.LightColors
 
 class DutiesScreen : Screen, UIInterface {
     @OptIn(ExperimentalResourceApi::class)
@@ -30,7 +32,7 @@ class DutiesScreen : Screen, UIInterface {
             ShowSnackbar(stringResource(Res.string.dutiesError))
         }
 
-        Column(Modifier.fillMaxSize()) {
+        Column(Modifier.fillMaxSize().background(LightColors.background)) {
             Spacer(60)
             pdfViewer.showPdf(FBSTORAGE, url)
         }

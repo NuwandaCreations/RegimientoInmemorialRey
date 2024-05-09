@@ -12,7 +12,7 @@ val OnSecondary = OnPrimary
 val SecondaryContainer = Secondary.copy(alpha = 0.8f)
 
 val Accent = Color(0xFFc62828)
-val Background = Color.Black
+val Background = Color(0xFF282221)
 val OnBackground = Color.White
 val Error = Color(0xffba1a1a)
 val OnError = Color(0xffffffff)

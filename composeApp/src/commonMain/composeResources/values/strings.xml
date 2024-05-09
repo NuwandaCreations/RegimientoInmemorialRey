@@ -13,11 +13,12 @@
                         \nSi hay quien dude Patria amada de tu historia\nsi hay quien sueñe mancillar tu eterna gloria\nromperá el Inmemorial del Rey el fuego\ny el ejército español te salvará.\n
                         \n¡ Todo por la Patria !\n¡ Todo por la Patria !\n¡ Inmemorial del Rey !</string>
     //APPBAR
+    <string name="home">Inicio</string>
     <string name="dailyOrder">Orden</string>
     <string name="duties">Servicios</string>
     <string name="anthem">Himno</string>
     <string name="organization">Orgánica</string>
-    <string name="home">Inicio</string>
+    <string name="news">Noticias</string>
     //ERROR
     <string name="dailyOrderError">No se ha podido cargar la orden del día</string>
     <string name="dutiesError">No se han podido cargar los servicios</string>

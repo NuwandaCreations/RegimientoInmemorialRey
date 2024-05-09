@@ -42,6 +42,7 @@ import regimientoinmemorialrey.composeapp.generated.resources.btn_stop
 import regimientoinmemorialrey.composeapp.generated.resources.escudo_rinf1
 import ui.components.AppBar
 import ui.components.ScreenType
+import ui.theme.LightColors
 
 class AnthemScreen : Screen, UIInterface {
     @OptIn(ExperimentalResourceApi::class)
@@ -56,7 +57,7 @@ class AnthemScreen : Screen, UIInterface {
         )
 
         Box(
-            Modifier.fillMaxSize().background(color = Color.Black)
+            Modifier.fillMaxSize().background(color = LightColors.background)
         ) {
             Image(
                 contentDescription = null,

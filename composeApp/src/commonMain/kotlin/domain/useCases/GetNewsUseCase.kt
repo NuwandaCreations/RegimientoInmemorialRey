@@ -4,7 +4,7 @@ import data.Repository
 import domain.model.News
 
 class GetNewsUseCase(private val repository: Repository) {
-    suspend operator fun invoke(): List<News> {
-        return repository.getNews()
+    suspend operator fun invoke(uploadNews: Boolean = false): List<News> {
+        return repository.getNews(uploadNews)
     }
 }
