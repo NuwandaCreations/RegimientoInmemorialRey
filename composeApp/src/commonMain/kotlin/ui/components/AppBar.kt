@@ -44,18 +44,21 @@ import regimientoinmemorialrey.composeapp.generated.resources.ic_anthem
 import regimientoinmemorialrey.composeapp.generated.resources.ic_daily_order
 import regimientoinmemorialrey.composeapp.generated.resources.ic_duties
 import regimientoinmemorialrey.composeapp.generated.resources.ic_home
+import regimientoinmemorialrey.composeapp.generated.resources.ic_news
 import regimientoinmemorialrey.composeapp.generated.resources.ic_organization
+import regimientoinmemorialrey.composeapp.generated.resources.news
 import regimientoinmemorialrey.composeapp.generated.resources.organization
 import ui.screens.anthem.AnthemScreen
 import ui.screens.dailyOrder.DailyOrderScreen
 import ui.screens.duties.DutiesScreen
 import ui.screens.home.HomeScreen
+import ui.screens.news.NewsScreen
 import ui.screens.organizationCharts.OrganizationCharts
 import ui.theme.LightColors
 import ui.theme.SelectedItem
 
 enum class ScreenType {
-    HOME, DAILYORDER, DUTIES, ANTHEM, ORGANIZATION
+    HOME, DAILYORDER, DUTIES, ANTHEM, ORGANIZATION, NEWS
 }
 
 @OptIn(ExperimentalResourceApi::class)
@@ -100,29 +103,34 @@ fun showNavRail(screenType: ScreenType) {
             when (screenType) {
                 ScreenType.HOME -> 0
                 ScreenType.DAILYORDER -> 1
-                ScreenType.DUTIES -> 2
+                ScreenType.ORGANIZATION -> 2
                 ScreenType.ANTHEM -> 3
-                ScreenType.ORGANIZATION -> 4
+                ScreenType.DUTIES -> 4
+                ScreenType.NEWS -> 5
             }
         )
     }
     val items = listOf(
         stringResource(Res.string.home),
         stringResource(Res.string.dailyOrder),
-        stringResource(Res.string.duties),
+        stringResource(Res.string.organization),
         stringResource(Res.string.anthem),
-        stringResource(Res.string.organization)
+        stringResource(Res.string.duties),
+        stringResource(Res.string.news)
     )
     val icons = listOf(
         painterResource(Res.drawable.ic_home),
         painterResource(Res.drawable.ic_daily_order),
-        painterResource(Res.drawable.ic_duties),
+        painterResource(Res.drawable.ic_organization),
         painterResource(Res.drawable.ic_anthem),
-        painterResource(Res.drawable.ic_organization)
+        painterResource(Res.drawable.ic_duties),
+        painterResource(Res.drawable.ic_news)
     )
-    NavigationRail(backgroundColor = LightColors.primary, modifier = Modifier.fillMaxHeight().verticalScroll(
-        rememberScrollState()
-    )) {
+    NavigationRail(
+        backgroundColor = LightColors.primary, modifier = Modifier.fillMaxHeight().verticalScroll(
+            rememberScrollState()
+        )
+    ) {
         items.forEachIndexed { index, item ->
             NavigationRailItem(
                 icon = {
@@ -142,23 +150,21 @@ fun showNavRail(screenType: ScreenType) {
                             0 -> {
                                 navigator?.push(HomeScreen())
                             }
-
                             1 -> {
                                 navigator?.push(DailyOrderScreen())
                             }
-
                             2 -> {
-                                navigator?.push(DutiesScreen())
+                                navigator?.push(OrganizationCharts())
                             }
-
                             3 -> {
                                 navigator?.push(AnthemScreen())
                             }
-
                             4 -> {
-                                navigator?.push(OrganizationCharts())
+                                navigator?.push(DutiesScreen())
                             }
-
+                            5 -> {
+                                navigator?.push(NewsScreen())
+                            }
                             else -> {}
                         }
                     }
