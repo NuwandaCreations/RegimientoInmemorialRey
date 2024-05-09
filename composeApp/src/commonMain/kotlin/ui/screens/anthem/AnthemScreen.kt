@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -32,11 +33,16 @@ import core.interfaces.UIInterface
 import core.interfaces.buildAudioPlayer
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import regimientoinmemorialrey.composeapp.generated.resources.Res
+import regimientoinmemorialrey.composeapp.generated.resources.anthem_lyrics
 import regimientoinmemorialrey.composeapp.generated.resources.btn_pause
 import regimientoinmemorialrey.composeapp.generated.resources.btn_play
 import regimientoinmemorialrey.composeapp.generated.resources.btn_stop
 import regimientoinmemorialrey.composeapp.generated.resources.escudo_rinf1
+import ui.components.AppBar
+import ui.components.ScreenType
+import ui.theme.LightColors
 
 class AnthemScreen : Screen, UIInterface {
     @OptIn(ExperimentalResourceApi::class)
@@ -51,7 +57,7 @@ class AnthemScreen : Screen, UIInterface {
         )
 
         Box(
-            Modifier.fillMaxSize().background(color = Color.Black)
+            Modifier.fillMaxSize().background(color = LightColors.background)
         ) {
             Image(
                 contentDescription = null,
@@ -62,10 +68,10 @@ class AnthemScreen : Screen, UIInterface {
         }
 
         Column(
-            Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
+            Modifier.fillMaxSize().verticalScroll(rememberScrollState())
+                .padding(top = 75.dp, bottom = 35.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(25)
             if (isPlaying) {
                 Row {
                     IconButton(onClick = {
@@ -111,50 +117,7 @@ class AnthemScreen : Screen, UIInterface {
             Spacer(25)
 
             Text(
-                "Hijos somos del ínclito Marte\n" +
-                        "y a la Patria ofrecemos la vida\n" +
-                        "nos recuerda la enseña querida\n" +
-                        "que juramos su honor defender\n" +
-                        "Esa ilustre y gloriosa Bandera\n" +
-                        "de la Patria es el símbolo amado\n" +
-                        "con cariño a ese lienzo sagrado\n" +
-                        "nuestra sangre debemos verter.\n" +
-                        "\n" +
-                        "No hay soldado que en ruda campaña\n" +
-                        "vacilante se quede detrás\n" +
-                        "siempre digno y en honra de España\n" +
-                        "ni aún vencido se humilla jamás.\n" +
-                        "Si la Patria lo exige, sabemos\n" +
-                        "en la lucha alcanzar alta prez\n" +
-                        "cuanto más en peligro la vemos\n" +
-                        "crece más nuestra fiera altivez.\n" +
-                        "\n" +
-                        "Nietos somos de aquellos valientes\n" +
-                        "que tan alto renombre alcanzaron\n" +
-                        "y animosos con furia lucharon\n" +
-                        "por librarnos del fiero invasor.\n" +
-                        "Derramando su sangre a torrentes\n" +
-                        "por la Patria, esa intrépida raza\n" +
-                        "con su ejemplo, el sendero nos traza\n" +
-                        "que debemos seguir en su honor.\n" +
-                        "\n" +
-                        "Defender a dos madres queridas\n" +
-                        "la misión del soldado ha de ser\n" +
-                        "ofreciendo por ella cien vidas\n" +
-                        "si cien vidas pudiera tener.\n" +
-                        "Al amor de esas madres juremos\n" +
-                        "en el alma elevar un altar\n" +
-                        "cuanto más a la Patria adoremos\n" +
-                        "la otra más orgullosa ha de estar.\n" +
-                        "\n" +
-                        "Si hay quien dude Patria amada de tu historia\n" +
-                        "si hay quien sueñe mancillar tu eterna gloria\n" +
-                        "romperá el Inmemorial del Rey el fuego\n" +
-                        "y el ejército español te salvará.\n" +
-                        "\n" +
-                        "¡ Todo por la Patria !\n" +
-                        "¡ Todo por la Patria !\n" +
-                        "¡ Inmemorial del Rey !",
+                stringResource(Res.string.anthem_lyrics),
                 textAlign = TextAlign.Center,
                 fontSize = 20.sp,
                 fontStyle = FontStyle.Italic,
@@ -164,5 +127,7 @@ class AnthemScreen : Screen, UIInterface {
 
             Spacer(25)
         }
+
+        AppBar(ScreenType.ANTHEM)
     }
 }

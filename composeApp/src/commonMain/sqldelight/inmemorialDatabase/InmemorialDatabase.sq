@@ -1,0 +1,17 @@
+CREATE TABLE News (
+    title TEXT,
+    photo TEXT,
+    date TEXT,
+    url TEXT
+);
+
+insertNews:
+INSERT INTO News(title, photo, date, url)
+VALUES (?, ?, ?, ?);
+
+selectNews:
+SELECT News.*
+FROM News;
+
+removeNews:
+DELETE FROM News;
