@@ -26,6 +26,7 @@ firebase = "1.12.0"
 ksoup = "0.1.2"
 coilCompose = "3.0.0-alpha06"
 sqlDriver = "2.0.2"
+accompanistSwiperefresh = "0.35.0-alpha"
 
 
 [libraries]
@@ -74,6 +75,8 @@ coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref
 
 android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDriver" }
 native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDriver" }
+
+accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwiperefresh" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

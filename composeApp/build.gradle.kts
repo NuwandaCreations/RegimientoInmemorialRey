@@ -59,6 +59,7 @@ kotlin {
             implementation(libs.ksoup.network)
             implementation(libs.coil.compose)
             implementation(libs.coil.network.ktor)
+            implementation(libs.accompanist.swiperefresh)
          }
     }
 }

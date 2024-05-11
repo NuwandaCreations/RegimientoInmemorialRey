@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,6 +14,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -44,7 +48,7 @@ class NewsScreen : Screen, UIInterface {
         var newsList: List<News> by remember { mutableStateOf(emptyList()) }
         val screenModel = getScreenModel<HomeScreenModel>()
         if (newsList.isEmpty()) {
-            screenModel.getNews()
+            screenModel.getNews(false)
             newsList = screenModel.newsList.value
         }
 
@@ -52,9 +56,11 @@ class NewsScreen : Screen, UIInterface {
         AppBar(ScreenType.NEWS)
     }
 
-    @OptIn(ExperimentalResourceApi::class)
+    @OptIn(ExperimentalResourceApi::class, ExperimentalMaterialApi::class)
     @Composable
     fun initUI(newsList: List<News>, screenModel: HomeScreenModel) {
+        val refreshing by screenModel.refreshState
+        val pullRefreshState = rememberPullRefreshState(refreshing, { screenModel.getNews(true) })
         Box(
             Modifier.fillMaxSize().background(color = LightColors.background)
         ) {
@@ -68,10 +74,21 @@ class NewsScreen : Screen, UIInterface {
         LazyColumn(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize().pullRefresh(pullRefreshState)
         ) {
             item { Spacer(50) }
             items(newsList.size) { showNews(newsList, screenModel, it) }
+        }
+        Column (
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Spacer(50)
+            PullRefreshIndicator(
+                refreshing = true,
+                state = pullRefreshState,
+                backgroundColor = LightColors.primary
+            )
         }
     }
 
